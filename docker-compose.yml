@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  short-url: 
+    build:
+      context: .
+      dockerfile: Dockerfile_local
+    env_file: 
+      - .env
+    ports: 
+      - "3003:3003"
+    volumes:
+      - .:/app
+      - .:/node_modules
+    command: nodemon server.js
+    depends_on:
+      - short-url-redis
+      - short-url-db
+
+  short-url-redis:
+    image: redis:5.0.1-alpine    
+
+  short-url-db:
+    image: mongo:3.2
+    command: mongod --smallfiles
+    volumes:
+      - ./mongodb:/data/db    
