@@ -44,22 +44,20 @@ const getFromId = (req, res) => {
 
 const formatDomain = (domain) => {
   const newDomain = domain.replace('www.', '');
-  console.log(newDomain);
   return newDomain;
-}
-
+};
 
 // refactoring
-const domain = (req, res) => shortUrl.find()
-  .then((result) => {
-    if (result.length === 0) return res.json(404).json({ message: 'empty domain' });
-    const formatDomainResults = result.map(async (results) => {
-      results.domain = formatDomain(results.domain);
-      console.log(results.domain)
-      return results;
-    })
-    return formatDomainResults
-  })
+// const domain = (req, res) => shortUrl.find()
+//   .then((result) => {
+//     if (result.length === 0) return res.json(404).json({ message: 'empty domain' });
+//     const formatDomainResults = result.map(async (results) => {
+//       results.domain = formatDomain(results.domain);
+//       console.log(results.domain)
+//       return results;
+//     })
+//     return formatDomainResults
+//   })
 
 module.exports = {
   shorten,
