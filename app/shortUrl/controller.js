@@ -48,6 +48,8 @@ const formatDomain = (domain) => {
   return newDomain;
 }
 
+
+// refactoring
 const domain = (req, res) => shortUrl.find()
   .then((result) => {
     if (result.length === 0) return res.json(404).json({ message: 'empty domain' });
